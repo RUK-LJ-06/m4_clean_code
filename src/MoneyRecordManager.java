@@ -11,9 +11,6 @@ public class MoneyRecordManager {
         records = new ArrayList<>();
         scanner = new Scanner(System.in);
         recordTracker = tracker;
-
-        // Kode yang tidak perlu (YAGNI)
-        int unusedVariable = 10; 
     }
 
     public void addRecord() {
@@ -23,41 +20,30 @@ public class MoneyRecordManager {
         scanner.nextLine();
         System.out.print("Masukkan deskripsi: ");
         String description = scanner.nextLine();
-
         System.out.println("1. Pendapatan");
         System.out.println("2. Pengeluaran");
         System.out.print("Pilih jenis catatan: ");
-        
-        // boolean isIncome = scanner.nextInt() == 1;
         int choice = scanner.nextInt();
         scanner.nextLine(); 
         System.out.println("======================");
-        MoneyRecord record;
 
-        // Blok switch yang tidak perlu (melanggar KISS)
-        switch (choice) {
-            case 1:
-                record = new Income(amount, description);
-                break;
-            case 2:
-                record = new Expense(amount, description);
-                break;
-            default:
+       // Mengganti switch dengan ternary operator (lebih sederhana dan sesuai KISS)
+        MoneyRecord record = (choice == 1) 
+        ? new Income(amount, description) 
+        : (choice == 2) 
+            ? new Expense(amount, description) 
+            : null;
+
+            if (record == null) {
                 System.out.println("Pilihan tidak valid");
                 return;
-        }
-
-        // Mengurangi penggunaan switch dengan ternary operator yang lebih sederhana
-        // MoneyRecord record = isIncome ? new Income(amount, description) : new Expense(amount, description);
+            }
 
         records.add(record);
 
         // Update saldo
-        // Penghitungan saldo yang berulang-ulang (melanggar DRY)
         double saldoSekarang = calculateSaldo();
         recordTracker.setSaldoSekarang(saldoSekarang);
-        double saldoSekarang2 = calculateSaldo();
-        recordTracker.setSaldoSekarang(saldoSekarang2); // Pengulangan yang tidak perlu
 
         System.out.println("Catatan berhasil ditambahkan.");
     }
@@ -67,12 +53,8 @@ public class MoneyRecordManager {
             System.out.println("Tidak ada catatan.");
             return;
         }
-
-        // Pengulangan kode untuk menampilkan catatan (melanggar DRY)
-        for (MoneyRecord record : records) {
-            record.display();
-        }
-        for (MoneyRecord record : records) { // Pengulangan yang sama dua kali
+        
+        for (MoneyRecord record : records) { 
             record.display();
         }
     }

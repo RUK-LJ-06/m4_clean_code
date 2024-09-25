@@ -11,10 +11,5 @@ public abstract class MoneyRecord {
         return amount;
     }
 
-    // Menambahkan metode yang tidak digunakan sama sekali (YAGNI)
-    public void unusedMethod() {
-        System.out.println("Ini adalah metode yang tidak terpakai.");
-    }
-
     public abstract void display();
 }

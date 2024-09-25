@@ -37,11 +37,6 @@ public class MoneyTracker {
             } else {
                 System.out.println("Pilihan tidak valid");
             }
-
-            // Kode yang tidak perlu ditambahkan (melanggar KISS dan YAGNI)
-            int unusedCode = 100;
-            unusedCode += 50;
-            System.out.println(":"+unusedCode);
         }
         scanner.close();
     }
@@ -57,5 +52,5 @@ public class MoneyTracker {
     public double getSaldoSekarang() {
         return saldoSekarang;
     }
-    
+
 }
