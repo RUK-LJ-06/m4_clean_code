@@ -23,9 +23,11 @@ public class MoneyRecordManager {
         scanner.nextLine();
         System.out.print("Masukkan deskripsi: ");
         String description = scanner.nextLine();
+
         System.out.println("1. Pendapatan");
         System.out.println("2. Pengeluaran");
         System.out.print("Pilih jenis catatan: ");
+        
         // boolean isIncome = scanner.nextInt() == 1;
         int choice = scanner.nextInt();
         scanner.nextLine(); 
