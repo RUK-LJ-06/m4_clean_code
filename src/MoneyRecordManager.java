@@ -12,7 +12,6 @@ public class MoneyRecordManager {
         scanner = new Scanner(System.in);
         recordTracker = tracker;
 
-        // Kode yang tidak perlu (YAGNI)
         int unusedVariable = 10; 
     }
 
@@ -23,18 +22,14 @@ public class MoneyRecordManager {
         scanner.nextLine();
         System.out.print("Masukkan deskripsi: ");
         String description = scanner.nextLine();
-
         System.out.println("1. Pendapatan");
         System.out.println("2. Pengeluaran");
         System.out.print("Pilih jenis catatan: ");
-        
-        // boolean isIncome = scanner.nextInt() == 1;
         int choice = scanner.nextInt();
         scanner.nextLine(); 
         System.out.println("======================");
         MoneyRecord record;
 
-        // Blok switch yang tidak perlu (melanggar KISS)
         switch (choice) {
             case 1:
                 record = new Income(amount, description);
@@ -47,17 +42,12 @@ public class MoneyRecordManager {
                 return;
         }
 
-        // Mengurangi penggunaan switch dengan ternary operator yang lebih sederhana
-        // MoneyRecord record = isIncome ? new Income(amount, description) : new Expense(amount, description);
-
         records.add(record);
 
-        // Update saldo
-        // Penghitungan saldo yang berulang-ulang (melanggar DRY)
         double saldoSekarang = calculateSaldo();
         recordTracker.setSaldoSekarang(saldoSekarang);
         double saldoSekarang2 = calculateSaldo();
-        recordTracker.setSaldoSekarang(saldoSekarang2); // Pengulangan yang tidak perlu
+        recordTracker.setSaldoSekarang(saldoSekarang2);
 
         System.out.println("Catatan berhasil ditambahkan.");
     }
@@ -68,11 +58,10 @@ public class MoneyRecordManager {
             return;
         }
 
-        // Pengulangan kode untuk menampilkan catatan (melanggar DRY)
         for (MoneyRecord record : records) {
             record.display();
         }
-        for (MoneyRecord record : records) { // Pengulangan yang sama dua kali
+        for (MoneyRecord record : records) {
             record.display();
         }
     }
