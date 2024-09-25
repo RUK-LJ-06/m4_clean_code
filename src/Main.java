@@ -7,8 +7,11 @@ public class Main {
         System.out.print("Masukkan saldo awal: ");
         double initialBalance = scanner.nextDouble();
         System.out.println("======================");
-        MoneyTracker tracker = new MoneyTracker(initialBalance);
-        tracker.start();
+        // Pengulangan objek MoneyTracker meskipun tidak perlu (Melanggar DRY dan YAGNI)
+        MoneyTracker tracker1 = new MoneyTracker(initialBalance);
+        MoneyTracker tracker2 = new MoneyTracker(initialBalance); 
+        tracker1.start();
+        tracker2.start(); // Tidak ada gunanya menjalankan dua tracker (YAGNI)
         scanner.close();
     }
 }

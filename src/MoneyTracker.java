@@ -23,24 +23,25 @@ public class MoneyTracker {
             System.out.println("4. Keluar");
             System.out.print("Pilih: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline character
+            scanner.nextLine();
             System.out.println("======================");
-            switch (choice) {
-                case 1:
-                    recordManager.addRecord();
-                    break;
-                case 2:
-                    recordManager.showRecords();
-                    break;
-                case 3:
-                    System.out.println("Saldo sekarang: " + saldoSekarang);
-                    break;
-                case 4:
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Pilihan tidak valid");
+           // Pengulangan logika yang tidak perlu di setiap pilihan (melanggar DRY)
+            if (choice == 1) {
+                recordManager.addRecord();
+            } else if (choice == 2) {
+                recordManager.showRecords();
+            } else if (choice == 3) {
+                System.out.println("Saldo sekarang: " + saldoSekarang);
+            } else if (choice == 4) {
+                exit = true;
+            } else {
+                System.out.println("Pilihan tidak valid");
             }
+
+            // Kode yang tidak perlu ditambahkan (melanggar KISS dan YAGNI)
+            int unusedCode = 100;
+            unusedCode += 50;
+            System.out.println(":"+unusedCode);
         }
         scanner.close();
     }
