@@ -25,7 +25,6 @@ public class MoneyTracker {
             int choice = scanner.nextInt();
             scanner.nextLine();
             System.out.println("======================");
-           // Pengulangan logika yang tidak perlu di setiap pilihan (melanggar DRY)
             if (choice == 1) {
                 recordManager.addRecord();
             } else if (choice == 2) {
@@ -37,8 +36,6 @@ public class MoneyTracker {
             } else {
                 System.out.println("Pilihan tidak valid");
             }
-
-            // Kode yang tidak perlu ditambahkan (melanggar KISS dan YAGNI)
             int unusedCode = 100;
             unusedCode += 50;
             System.out.println(":"+unusedCode);
